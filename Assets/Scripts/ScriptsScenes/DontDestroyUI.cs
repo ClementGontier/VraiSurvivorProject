@@ -25,7 +25,7 @@ public class DontDestroyUI : MonoBehaviour
         {
             Destroy(gameObject); 
         }
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
         SceneManager.LoadSceneAsync("MainMenu");
     }
 
@@ -85,6 +85,7 @@ public class DontDestroyUI : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         singleton.playerXP = 0;
         singleton.playerLevel = 1;
+        singleton.expToNextLevel = 10;
         singleton.isAlive = true;
         singleton.playerHealth = singleton.playerMaxHealth;
         singleton.timertime = singleton.timertimeMax;
@@ -93,10 +94,18 @@ public class DontDestroyUI : MonoBehaviour
 
     private void reinitialiserListeArmes()
     {
-        foreach(IWeapon weapon in singleton.wm.activeWeapons)
+        IWeapon pistoletAuto = null;
+        for(int i = singleton.wm.activeWeapons.Count - 1; i >= 0; i--)
         {
+            IWeapon weapon = singleton.wm.activeWeapons[i];
+            if(weapon.GetGameObject().name == "pistoletAuto")
+            {
+                pistoletAuto = weapon;
+            }
             weapon.Reinit();
             singleton.wm.eneleverArme(weapon);
+            Debug.Log(weapon.GetGameObject().name + " a été réinitialisé et retiré de la liste");
         }
+        singleton.wm.ajoutArme(pistoletAuto);
     }
 }

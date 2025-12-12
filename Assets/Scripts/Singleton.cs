@@ -81,6 +81,7 @@ public class Singleton : MonoBehaviour
         timer = DontDestroyUI.instance.GetTimer();
         animdeath = GameObject.Find("Joueur")?.GetComponent<Animator>();
         xpBar = DontDestroyUI.instance.XPBar;
+        
         if (scene.name == "MainMenu" || scene.name == "Victoire")
             Destroy(GameObject.Find("Joueur"));
         if(timer != null)

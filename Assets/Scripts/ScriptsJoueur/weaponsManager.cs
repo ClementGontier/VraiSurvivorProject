@@ -39,12 +39,14 @@ public class weaponsManager : MonoBehaviour
     {
         lockedWeapons.Remove(weapon);
         activeWeapons.Add(weapon);
+        weapon.GetGameObject().SetActive(true);
     }
 
     public void eneleverArme(IWeapon weapon)
     {
         lockedWeapons.Add(weapon);
         activeWeapons.Remove(weapon);
+        weapon.GetGameObject().SetActive(false);
     }
 
 
