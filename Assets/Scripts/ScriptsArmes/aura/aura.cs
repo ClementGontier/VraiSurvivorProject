@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class aura : MonoBehaviour, IWeapon
 {
-    public float vitesseAttaque = 1f;
-    public int degats = 10;
+    public float vitesseAttaque = 0.5f;
+    public int degats = 1;
     public float taille = 5;
     private float tempsAvantProchaineAttaque = 0f;
     private List<GameObject> EnnemiesDansZone = new();

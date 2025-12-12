@@ -723,9 +723,9 @@ MonoBehaviour:
   timertime: 60
   pvText: {fileID: 0}
   timer: {fileID: 0}
-  nbKillUI: {fileID: 0}
   animdeath: {fileID: 1479426327}
   timertimeMax: 60
+  hasLoadedScene: 0
 --- !u!114 &976984474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,7 +739,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 0}
-  LvlUpMenu: {fileID: 0}
 --- !u!114 &976984475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,6 +945,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.52
       objectReference: {fileID: 0}
+    - target: {fileID: 2553564328766943395, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: degats
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553564328766943395, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: taille
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553564328766943395, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: vitesseAttaque
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3095240275519489355, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -995,12 +1006,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6444137140185741319, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: degats
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444137140185741319, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
       propertyPath: vitesseAttaque
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7751899910538333146, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198282626519021554, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: degats
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198282626519021554, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: vitesseAttaque
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198282626519021554, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: nombreProjectiles
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
