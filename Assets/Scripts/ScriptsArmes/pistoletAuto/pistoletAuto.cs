@@ -34,11 +34,20 @@ public class pistoletAuto : MonoBehaviour, IWeapon
         return gameObject.name;
     }
 
-    public void Upgrade()
+     public void Upgrade()
     {
-        vitesseProjectile += 1;
-        degats ++;
-        vitesseAttaque ++;
+        int x = Random.Range(1, 3);
+        switch (x)
+        {
+            case 1:
+                vitesseAttaque ++;
+                Debug.Log("vitesse attaque boule de feu augmenté");
+                break;
+            case 2:
+                degats ++;
+                Debug.Log("attaque boule de feu augmenté");
+                break;
+        }
     }
 
 

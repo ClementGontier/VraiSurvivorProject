@@ -46,9 +46,22 @@ public class pelles : MonoBehaviour, IWeapon
 
     public void Upgrade()
     {
-        vitesseAttaque += 0.5f;
-        nombreProjectiles ++;
-        degats += 2;
+        int x = Random.Range(1, 4);
+        switch (x)
+        {
+            case 1:
+                vitesseAttaque += 0.5f;
+                Debug.Log("vitesse attaque pelle augmenté");
+                break;
+            case 2:
+                nombreProjectiles ++;
+                Debug.Log("nb projetile pelle augmenté");
+                break;
+            case 3:
+                degats += 2;
+                Debug.Log("attaque pelle augmenté");
+                break;
+        }
     }
     
     public void essaieAttaque(GameObject ennemie)

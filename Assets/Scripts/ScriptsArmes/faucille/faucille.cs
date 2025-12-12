@@ -7,7 +7,7 @@ public class faucille : MonoBehaviour, IWeapon
     public float vitesseAttaque = 1f;
     protected float tempsAvantProchaineAttaque = 0f;
     public float vitesseProjectile = 10f;
-    public int degats = 10;
+    public int degats = 1;
     public float distanceAvantDemi = 5f;
     public float taille = 1;
     protected GameObject projectilePrefab;
@@ -53,9 +53,22 @@ public class faucille : MonoBehaviour, IWeapon
 
     public void Upgrade()
     {
-        vitesseProjectile += 2;
-        degats += 2;
-        taille += 2;
+        int x = Random.Range(1, 4);
+        switch (x)
+        {
+            case 1:
+                vitesseAttaque += 0.5f;
+                Debug.Log("vitesse attaque faucille augmenté");
+                break;
+            case 2:
+                taille += 2;
+                Debug.Log("taille faucille augmenté");
+                break;
+            case 3:
+                degats += 2;
+                Debug.Log("attaque faucille augmenté");
+                break;
+        }
     }
     
     public void essaieAttaque(GameObject ennemie)

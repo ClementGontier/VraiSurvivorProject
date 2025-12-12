@@ -37,11 +37,24 @@ public class aura : MonoBehaviour, IWeapon
         return gameObject.name;
     }
 
-    public void Upgrade()
+     public void Upgrade()
     {
-        vitesseAttaque += 0.5f;
-        degats += 2;
-        taille += 3;
+        int x = Random.Range(1, 4);
+        switch (x)
+        {
+            case 1:
+                vitesseAttaque += 0.5f;
+                Debug.Log("vitesse attaque aura augmenté");
+                break;
+            case 2:
+                taille += 3;
+                Debug.Log("taille aura augmenté");
+                break;
+            case 3:
+                degats += 2;
+                Debug.Log("attaque aura augmenté");
+                break;
+        }
     }
 
     public void updateWeapon()
