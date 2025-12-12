@@ -7,4 +7,5 @@ public interface IWeapon
     void Upgrade();
     public GameObject GetGameObject();
     public string GetName();
+    public void Reinit();
 }

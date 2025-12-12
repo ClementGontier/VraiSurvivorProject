@@ -50,6 +50,12 @@ public class pistoletAuto : MonoBehaviour, IWeapon
         }
     }
 
+    public void Reinit()
+    {
+        vitesseAttaque = 1f;
+        degats = 10;
+    }
+
 
     public void updateWeapon()
     {

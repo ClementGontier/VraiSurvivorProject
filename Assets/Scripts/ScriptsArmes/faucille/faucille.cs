@@ -70,7 +70,14 @@ public class faucille : MonoBehaviour, IWeapon
                 break;
         }
     }
-    
+
+    public void Reinit()
+    {
+        vitesseAttaque = 1f;
+        degats = 1;
+        taille = 1;
+    }
+
     public void essaieAttaque(GameObject ennemie)
     {
         if (tempsAvantProchaineAttaque <= 0)

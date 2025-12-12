@@ -48,6 +48,11 @@ public class fleche : MonoBehaviour, IWeapon
     {
         
     }
+
+    public void Reinit()
+    {
+        
+    }
     
     public void essaieAttaque(GameObject ennemie)
     {

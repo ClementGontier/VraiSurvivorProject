@@ -63,6 +63,13 @@ public class pelles : MonoBehaviour, IWeapon
                 break;
         }
     }
+
+    public void Reinit()
+    {
+        nombreProjectiles = 3;
+        vitesseAttaque = 1f;
+        degats = 10;
+    }
     
     public void essaieAttaque(GameObject ennemie)
     {

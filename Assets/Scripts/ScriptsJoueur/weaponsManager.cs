@@ -41,6 +41,13 @@ public class weaponsManager : MonoBehaviour
         activeWeapons.Add(weapon);
     }
 
+    public void eneleverArme(IWeapon weapon)
+    {
+        lockedWeapons.Add(weapon);
+        activeWeapons.Remove(weapon);
+    }
+
+
     void OnTriggerStay2D(Collider2D trigger)
     {
         if (trigger.gameObject.tag == "ennemie")

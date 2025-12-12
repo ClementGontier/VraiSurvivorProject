@@ -17,7 +17,7 @@ public class aura : MonoBehaviour, IWeapon
         {
             tempsAvantProchaineAttaque -= Time.deltaTime;
         }
-        
+
         transform.localScale = new Vector3(taille, taille, 0);
 
         if (tempsAvantProchaineAttaque <= 0)
@@ -37,7 +37,7 @@ public class aura : MonoBehaviour, IWeapon
         return gameObject.name;
     }
 
-     public void Upgrade()
+    public void Upgrade()
     {
         int x = Random.Range(1, 4);
         switch (x)
@@ -57,24 +57,31 @@ public class aura : MonoBehaviour, IWeapon
         }
     }
 
+    public void Reinit()
+    {
+        vitesseAttaque = 0.5f;
+        degats = 1;
+        taille = 5;
+    }
+
     public void updateWeapon()
     {
-        
+
     }
-    
+
     public void essaieAttaque(GameObject ennemie)
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "ennemie") EnnemiesDansZone.Add(collision.gameObject);
+        if (collision.gameObject.tag == "ennemie") EnnemiesDansZone.Add(collision.gameObject);
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "ennemie") EnnemiesDansZone.Remove(collision.gameObject);
+        if (collision.gameObject.tag == "ennemie") EnnemiesDansZone.Remove(collision.gameObject);
     }
 
     public void attaque()

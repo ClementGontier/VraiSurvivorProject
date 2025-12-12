@@ -19,7 +19,7 @@ public class Singleton : MonoBehaviour
     public int playerXP = 0;
     public int playerLevel = 1;
     public int expToNextLevel = 10;
-    private weaponsManager wm;        
+    public weaponsManager wm;        
     public float timertime = 60;
 
     [Header("Références Scène")]
@@ -81,12 +81,6 @@ public class Singleton : MonoBehaviour
         timer = DontDestroyUI.instance.GetTimer();
         animdeath = GameObject.Find("Joueur")?.GetComponent<Animator>();
         xpBar = DontDestroyUI.instance.XPBar;
-
-        isAlive = true;
-        playerHealth = playerMaxHealth;
-        timertime = timertimeMax;
-        playerXP = 0;
-        playerLevel = 1;
         if (scene.name == "MainMenu" || scene.name == "Victoire")
             Destroy(GameObject.Find("Joueur"));
         if(timer != null)
