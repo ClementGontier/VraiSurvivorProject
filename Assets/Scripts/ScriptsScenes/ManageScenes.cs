@@ -51,8 +51,10 @@ public class ManageScenes : MonoBehaviour
        DontDestroyUI.instance.timer.gameObject.SetActive(true);
        DontDestroyUI.instance.XPBar.gameObject.SetActive(true);}
         // Désactive automatiquement le GameOverMenu sur nouvelle scène
-        if (gameOverMenu != null)
+        if (gameOverMenu != null){
             gameOverMenu.SetActive(false);
+            AudioManager.Instance.musicSource.Play();
+        }
 
         Time.timeScale = 1f; // reprend le temps si c'était en pause
     }
@@ -61,7 +63,7 @@ public class ManageScenes : MonoBehaviour
     {
         if (gameOverMenu != null)
             gameOverMenu.SetActive(true);
-           // GameObject.FindGameObjectWithTag("HealthUI").SetActive(false);
+            AudioManager.Instance.musicSource.Stop();
 
         Time.timeScale = 0f; // Met le temps en pause
     }

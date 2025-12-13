@@ -12,6 +12,7 @@ public class pelles : MonoBehaviour, IWeapon
     public GameObject departTire;
 
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -76,6 +77,7 @@ public class pelles : MonoBehaviour, IWeapon
         if(tempsAvantProchaineAttaque<=0)
         {
             attaque(ennemie);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.pelleson);
             tempsAvantProchaineAttaque = 1f / vitesseAttaque;
         }
     }

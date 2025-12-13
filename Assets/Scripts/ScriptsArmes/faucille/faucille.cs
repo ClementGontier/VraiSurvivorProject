@@ -13,6 +13,7 @@ public class faucille : MonoBehaviour, IWeapon
     protected GameObject projectilePrefab;
     public GameObject departTire;
     private weaponsManager wm;
+
     
 
 
@@ -84,6 +85,7 @@ public class faucille : MonoBehaviour, IWeapon
         {
             GameObject ennemiCible = wm.ChoisirEnnemi();
             attaque(ennemiCible);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.faucilleson);
             tempsAvantProchaineAttaque = 1f / vitesseAttaque;
         }
     }

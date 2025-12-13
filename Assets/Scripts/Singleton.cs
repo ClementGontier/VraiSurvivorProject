@@ -19,21 +19,22 @@ public class Singleton : MonoBehaviour
     public int playerXP = 0;
     public int playerLevel = 1;
     public int expToNextLevel = 10;
-    public weaponsManager wm;        
+    public weaponsManager wm;
     public float timertime = 60;
 
     [Header("Références Scène")]
     public TMP_Text pvText;
     public TMP_Text timer;
-    [SerializeField] private Animator animdeath;
     private XPBarScript xpBar;
     public float timertimeMax = 60;
     public bool hasLoadedScene = false;
+
 
     void Update()
     {
         if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "Victoire")
         {
+            AudioManager.Instance.PlayMusic(AudioManager.Instance.musiqueniveau);
             timertime -= 1 * Time.deltaTime;
             timer.text = timertime.ToString("0");
 
@@ -44,6 +45,10 @@ public class Singleton : MonoBehaviour
                 ManageScenes.instance.NextLevel();
                 timertime = timertimeMax;
             }
+        }
+        else
+        {
+            AudioManager.Instance.musicSource.Stop();
         }
     }
 
@@ -79,23 +84,19 @@ public class Singleton : MonoBehaviour
     {
         pvText = DontDestroyUI.instance.GetHealthUI();
         timer = DontDestroyUI.instance.GetTimer();
-        animdeath = GameObject.Find("Joueur")?.GetComponent<Animator>();
         xpBar = DontDestroyUI.instance.XPBar;
-        
+
         if (scene.name == "MainMenu" || scene.name == "Victoire")
             Destroy(GameObject.Find("Joueur"));
-        if(timer != null)
-            timer.text= "Temps : " + timertime.ToString();
+        if (timer != null)
+            timer.text = "Temps : " + timertime.ToString();
         if (pvText != null)
             pvText.text = "Vies : " + playerHealth.ToString();
-
-        if (animdeath != null)
-            animdeath.SetBool("isNotAlive", false);
 
         xpBar.UpdateXPBar(playerXP, expToNextLevel);
     }
 
-    
+
     public void TakeDamage(int damage)
     {
         if (!isAlive || isInvincible)
@@ -114,18 +115,17 @@ public class Singleton : MonoBehaviour
             DontDestroyUI.instance.healthUI.gameObject.SetActive(false);
             DontDestroyUI.instance.timer.gameObject.SetActive(false);
             DontDestroyUI.instance.XPBar.gameObject.SetActive(false);
-            if (animdeath != null)
-                animdeath.SetBool("isNotAlive", true);
-
             ManageScenes.instance.gameOver();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.gameoverson);
+
         }
     }
-
 
     // ajout une seconde d'invincibilité après s'être fait touché par un ennemi
     private IEnumerator ICD()
     {
         isInvincible = true;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.degat);
         Debug.Log("Joueur invincible pendant 1 seconde");
         yield return new WaitForSeconds(1f);
         isInvincible = false;
@@ -134,11 +134,16 @@ public class Singleton : MonoBehaviour
     public void AddXP(int nbExp)
     {
         playerXP += nbExp;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.xpson);
         xpBar.UpdateXPBar(playerXP, expToNextLevel);
+        
 
         if (playerXP >= expToNextLevel)
         {
             LevelUp();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.levelupson);
+
+            
         }
     }
 
@@ -146,7 +151,7 @@ public class Singleton : MonoBehaviour
     {
         playerLevel++;
         playerXP -= expToNextLevel;
-        expToNextLevel += 10; 
+        expToNextLevel += 10;
         wm.ApplyRandomUpgrade();
     }
 }

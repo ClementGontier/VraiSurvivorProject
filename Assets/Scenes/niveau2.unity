@@ -666,100 +666,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &976984470
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 976984472}
-  - component: {fileID: 976984473}
-  - component: {fileID: 976984474}
-  - component: {fileID: 976984475}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &976984472
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976984470}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.450818, y: 1.4789736, z: 0.0050480873}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &976984473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976984470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe177dda1d11d3f4a83bbb20571b9371, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMaxHealth: 10
-  playerHealth: 10
-  isAlive: 1
-  isInvincible: 0
-  nbEnnemiesKilled: 0
-  playerXP: 0
-  playerLevel: 1
-  expToNextLevel: 10
-  timertime: 60
-  pvText: {fileID: 0}
-  timer: {fileID: 0}
-  nbKillUI: {fileID: 0}
-  animdeath: {fileID: 1479426327}
-  timertimeMax: 60
---- !u!114 &976984474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976984470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1408a7b59fe9ff43bf15b2632a820be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverMenu: {fileID: 0}
-  LvlUpMenu: {fileID: 0}
---- !u!114 &976984475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976984470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aba88f35754fdf4ea02f2515e5f6908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1479426326}
-  spawnRadius: 7
-  spawnInterval: 5
-  nbEnemies: 3
-  increaseInterval: 5
-  increaseAmount: 3
-  palier1: 10
-  palier2: 20
 --- !u!1 &1075753212
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,6 +852,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.52
       objectReference: {fileID: 0}
+    - target: {fileID: 2553564328766943395, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: faucilleson
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3095240275519489355, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -994,6 +904,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5594070469939093104, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: sonepee
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444137140185741319, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: bouleson
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6444137140185741319, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
       propertyPath: vitesseAttaque
       value: 1
@@ -1001,6 +919,10 @@ PrefabInstance:
     - target: {fileID: 7751899910538333146, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198282626519021554, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: pelleson
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1010,16 +932,6 @@ PrefabInstance:
       addedObject: {fileID: 1448846716}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
---- !u!1 &1479426326 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 938569194093989799, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
-  m_PrefabInstance: {fileID: 1479426325}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1479426327 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 384435673510969571, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
-  m_PrefabInstance: {fileID: 1479426325}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1479426334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3122733389154089124, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
@@ -13324,5 +13236,4 @@ SceneRoots:
   - {fileID: 422431105}
   - {fileID: 519420032}
   - {fileID: 818226789}
-  - {fileID: 976984472}
   - {fileID: 1479426325}

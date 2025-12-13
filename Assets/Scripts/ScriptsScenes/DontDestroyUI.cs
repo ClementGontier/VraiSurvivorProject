@@ -13,6 +13,7 @@ public class DontDestroyUI : MonoBehaviour
     public TMP_Text timer;
     public XPBarScript XPBar;
     private Singleton singleton;
+    private AudioManager audiom;
     void Awake()
     {
 
@@ -44,10 +45,7 @@ public class DontDestroyUI : MonoBehaviour
         if (scene.name == "niveau1")
         {
             singleton = FindAnyObjectByType<Singleton>();
-            if (singleton != null)
-            {
-                Debug.Log("SUCE MA BITE");
-            }
+            audiom = FindAnyObjectByType<AudioManager>();
         }
     }
 

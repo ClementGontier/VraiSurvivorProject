@@ -6,6 +6,7 @@ public class bougejoueur : MonoBehaviour
     private Vector2 position;
     public float vitesse = 5f;
     [SerializeField] private Animator animwg, animwd, animag, animad;
+
    
     private void Awake()
     {
@@ -69,10 +70,12 @@ public class bougejoueur : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (joueur.GetComponent<SpriteRenderer>().flipX == true)
+            if (joueur.GetComponent<SpriteRenderer>().flipX == true){
                 animag.SetBool("isAttacking", true);
-            else
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.sonepee);}
+            else{
                 animag.SetBool("isAttacking", true);
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.sonepee);}
         }
         else
         {

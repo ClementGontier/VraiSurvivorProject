@@ -71,6 +71,7 @@ public class pistoletAuto : MonoBehaviour, IWeapon
         if(tempsAvantProchaineAttaque<=0)
         {
             attaque(ennemie);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.bouleson);
             tempsAvantProchaineAttaque = 1f / vitesseAttaque;
         }
     }
