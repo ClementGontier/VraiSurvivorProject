@@ -40,11 +40,11 @@ public class pistoletAuto : MonoBehaviour, IWeapon
         switch (x)
         {
             case 1:
-                vitesseAttaque ++;
+                vitesseAttaque +=0.3f;
                 Debug.Log("vitesse attaque boule de feu augmenté");
                 break;
             case 2:
-                degats ++;
+                degats +=2;
                 Debug.Log("attaque boule de feu augmenté");
                 break;
         }

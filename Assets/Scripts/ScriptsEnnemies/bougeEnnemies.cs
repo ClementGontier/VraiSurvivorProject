@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class bougeEnnemies : MonoBehaviour
@@ -7,6 +10,7 @@ public class bougeEnnemies : MonoBehaviour
     public float speed = 2f;
     public Animator animator;
     public SpriteRenderer sr;
+    public string animationName = "Move";
 
     // Update is called once per frame
     void Update()
@@ -33,8 +37,7 @@ public class bougeEnnemies : MonoBehaviour
             // on applique le flip
             transform.localScale = scale;
         }
-        // mise à jour de l’animator
-        animator.Play("Move");
+        animator.Play(animationName);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

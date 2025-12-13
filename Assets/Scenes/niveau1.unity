@@ -1178,7 +1178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6444137140185741319, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
       propertyPath: vitesseAttaque
-      value: 1
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444137140185741319, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
+      propertyPath: vitesseProjectile
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7751899910538333146, guid: 40714f90e7a200c468c4a9c956d24453, type: 3}
       propertyPath: m_IsActive

@@ -137,7 +137,7 @@ public class Singleton : MonoBehaviour
     {
         playerXP += nbExp;
         AudioManager.Instance.PlaySFX(AudioManager.Instance.xpson);   
-        if (playerXP >= expToNextLevel)
+        while (playerXP >= expToNextLevel)
         {
             LevelUp();
             AudioManager.Instance.PlaySFX(AudioManager.Instance.levelupson);
@@ -150,6 +150,8 @@ public class Singleton : MonoBehaviour
         playerLevel++;
         playerXP -= expToNextLevel;
         expToNextLevel += 10;
+        playerMaxHealth += 2;
+        playerHealth += 2;
         wm.ApplyRandomUpgrade();
         xpBar.UpdateXPBarTitle(playerLevel);
     }
