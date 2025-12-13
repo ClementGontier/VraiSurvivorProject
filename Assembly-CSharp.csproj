@@ -66,8 +66,8 @@
     <Compile Include="Assets\Scripts\ScriptsArmes\aura\aura.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\pelles\pelles.cs" />
     <Compile Include="Assets\ImportedAssets\DungeonMonsters2D\UserInterface\MoveLeftRight.cs" />
-    <Compile Include="Assets\Scripts\ScriptsEnnemies\vieEnnemies.cs" />
     <Compile Include="Assets\Scripts\ScriptsScenes\ChangeScene.cs" />
+    <Compile Include="Assets\Scripts\ScriptsEnnemies\vieEnnemies.cs" />
     <Compile Include="Assets\Scripts\ScriptsScenes\GetPlayer.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\pistoletAuto\pistoletAuto.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\fleche\projectileFlecheManager.cs" />
