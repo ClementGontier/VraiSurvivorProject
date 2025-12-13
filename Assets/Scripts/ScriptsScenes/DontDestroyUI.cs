@@ -80,30 +80,42 @@ public class DontDestroyUI : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("niveau1");
         singleton.playerXP = 0;
         singleton.playerLevel = 1;
         singleton.expToNextLevel = 10;
         singleton.isAlive = true;
+        singleton.playerMaxHealth = 10;
         singleton.playerHealth = singleton.playerMaxHealth;
         singleton.timertime = singleton.timertimeMax;
         reinitialiserListeArmes();
+        Debug.Log("restart fait");
+        SceneManager.LoadScene("niveau1");
     }
 
     private void reinitialiserListeArmes()
     {
         IWeapon pistoletAuto = null;
-        for(int i = singleton.wm.activeWeapons.Count - 1; i >= 0; i--)
+        if (singleton.wm.activeWeapons.Count > 1)
         {
-            IWeapon weapon = singleton.wm.activeWeapons[i];
-            if(weapon.GetGameObject().name == "pistoletAuto")
+
+            for (int i = singleton.wm.activeWeapons.Count - 1; i >= 0; i--)
             {
-                pistoletAuto = weapon;
+                IWeapon weapon = singleton.wm.activeWeapons[i];
+                if (weapon != null)
+                {
+                    if (weapon.GetGameObject().name == "pistoletAuto")
+                    {
+                        pistoletAuto = weapon;
+                    }
+                    weapon.Reinit();
+                    singleton.wm.eneleverArme(weapon);
+                    Debug.Log(weapon.GetGameObject().name + " a été réinitialisé et retiré de la liste");
+                }
+
             }
-            weapon.Reinit();
-            singleton.wm.eneleverArme(weapon);
-            Debug.Log(weapon.GetGameObject().name + " a été réinitialisé et retiré de la liste");
+
         }
+
         singleton.wm.ajoutArme(pistoletAuto);
     }
 }
