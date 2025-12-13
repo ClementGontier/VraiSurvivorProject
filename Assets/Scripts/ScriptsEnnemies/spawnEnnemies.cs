@@ -141,19 +141,25 @@ public class spawnEnnemies : MonoBehaviour
                 {
                     int nbEnemieA = UnityEngine.Random.Range(1, nbEnemies);
                     int nbEnemieB = nbEnemies - nbEnemieA;
-                    for (int i = 0; i < nbEnemieA; i++) SpawnEnemy("enemyPrefab2");
-                    for (int i = 0; i < nbEnemieB; i++) SpawnEnemy("enemyPrefab3");
+                    for (int i = 0; i < nbEnemieA; i++) SpawnEnemy("enemyPrefab6");
+                    for (int i = 0; i < nbEnemieB; i++) SpawnEnemy("enemyPrefab7");
                 }
                 else if (nbEnemies > palier2)
                 {
                     int nbEnemieA = UnityEngine.Random.Range(1, nbEnemies);
                     int nbEnemieB = nbEnemies - nbEnemieA;
-                    for (int i = 0; i < nbEnemieA; i++) SpawnEnemy("enemyPrefab3");
-                    for (int i = 0; i < nbEnemieB; i++) SpawnEnemy("enemyPrefab4");
+                    for (int i = 0; i < nbEnemieA; i++) SpawnEnemy("enemyPrefab7");
+                    for (int i = 0; i < nbEnemieB; i++) SpawnEnemy("enemyPrefab8");
                 }
                 else
                 {
-                    for (int i = 0; i < nbEnemies; i++) SpawnEnemy("enemyPrefab2");
+                    for (int i = 0; i < nbEnemies; i++) SpawnEnemy("enemyPrefab6");
+                }
+                if(singleton.timertime <= 30f && !bossSpawned)
+                {
+                    // on spawn le boss une seule fois quand le temps est inférieur à 30 secondes
+                    SpawnEnemy("bossPrefab");
+                    bossSpawned = true;
                 }
                 yield return new WaitForSeconds(spawnInterval);
             }

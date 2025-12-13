@@ -788,7 +788,7 @@ Transform:
   m_GameObject: {fileID: 4831696903622484056}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.258379, y: 1.4268072, z: -75.36}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -888,6 +888,7 @@ MonoBehaviour:
   speed: 2
   animator: {fileID: 776312811966839935}
   sr: {fileID: 0}
+  animationName: Move
 --- !u!61 &-5911246669869486151
 BoxCollider2D:
   m_ObjectHideFlags: 0
