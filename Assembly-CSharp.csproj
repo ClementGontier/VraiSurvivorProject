@@ -42,7 +42,7 @@
     <UnityVersion>6000.0.59f2</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\clement\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\Merwyn\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.59f2\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.59f2\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.59f2\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -54,12 +54,12 @@
     <Compile Include="Assets\Scripts\ScriptsArmes\pelles\projectilesPellesManager.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\fleche\fleche.cs" />
     <Compile Include="Assets\Scripts\ScriptsScenes\DontDestroyUI.cs" />
-    <Compile Include="Assets\Scripts\ManageMenu.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\faucille\projectileFaucilleManager.cs" />
     <Compile Include="Assets\ImportedAssets\DungeonMonsters2D\UserInterface\StartMenu.cs" />
     <Compile Include="Assets\Scripts\ScriptsJoueur\bougejoueur.cs" />
     <Compile Include="Assets\Scripts\ScriptsEnnemies\bougeEnnemies.cs" />
     <Compile Include="Assets\Scripts\ScriptsScenes\ManageScenes.cs" />
+    <Compile Include="Assets\Scripts\ScriptsScenes\ManageMenu.cs" />
     <Compile Include="Assets\Scripts\ScriptsScenes\XPBarScript.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\IWeapon.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\pistoletAuto\projectilesPistoletAutoManager.cs" />
@@ -67,12 +67,12 @@
     <Compile Include="Assets\Scripts\ScriptsArmes\pelles\pelles.cs" />
     <Compile Include="Assets\ImportedAssets\DungeonMonsters2D\UserInterface\MoveLeftRight.cs" />
     <Compile Include="Assets\Scripts\ScriptsEnnemies\vieEnnemies.cs" />
+    <Compile Include="Assets\Scripts\ScriptsScenes\ChangeScene.cs" />
     <Compile Include="Assets\Scripts\ScriptsScenes\GetPlayer.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\pistoletAuto\pistoletAuto.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\fleche\projectileFlecheManager.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\faucille\faucille.cs" />
     <Compile Include="Assets\Scripts\ScriptsXp\ExpManager.cs" />
-    <Compile Include="Assets\Scripts\ChangeScene.cs" />
     <Compile Include="Assets\Scripts\ScriptsEnnemies\spawnEnnemies.cs" />
   </ItemGroup>
   <ItemGroup>

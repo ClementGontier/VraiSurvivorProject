@@ -86,6 +86,8 @@ public class Singleton : MonoBehaviour
         timer = DontDestroyUI.instance.GetTimer();
         xpBar = DontDestroyUI.instance.XPBar;
 
+        playerHealth = playerMaxHealth;
+
         if (scene.name == "MainMenu" || scene.name == "Victoire")
             Destroy(GameObject.Find("Joueur"));
         if (timer != null)
@@ -134,17 +136,13 @@ public class Singleton : MonoBehaviour
     public void AddXP(int nbExp)
     {
         playerXP += nbExp;
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.xpson);
-        xpBar.UpdateXPBar(playerXP, expToNextLevel);
-        
-
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.xpson);   
         if (playerXP >= expToNextLevel)
         {
             LevelUp();
             AudioManager.Instance.PlaySFX(AudioManager.Instance.levelupson);
-
-            
         }
+        xpBar.UpdateXPBar(playerXP, expToNextLevel);
     }
 
     private void LevelUp()
@@ -153,5 +151,6 @@ public class Singleton : MonoBehaviour
         playerXP -= expToNextLevel;
         expToNextLevel += 10;
         wm.ApplyRandomUpgrade();
+        xpBar.UpdateXPBarTitle(playerLevel);
     }
 }

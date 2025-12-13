@@ -80,7 +80,7 @@ public class DontDestroyUI : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("niveau1");
         singleton.playerXP = 0;
         singleton.playerLevel = 1;
         singleton.expToNextLevel = 10;
