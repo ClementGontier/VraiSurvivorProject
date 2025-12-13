@@ -25,7 +25,7 @@ public class Singleton : MonoBehaviour
     [Header("Références Scène")]
     public TMP_Text pvText;
     public TMP_Text timer;
-    private XPBarScript xpBar;
+    public XPBarScript xpBar;
     public float timertimeMax = 60;
     public bool hasLoadedScene = false;
 

@@ -83,6 +83,7 @@ public class DontDestroyUI : MonoBehaviour
         singleton.playerXP = 0;
         singleton.playerLevel = 1;
         singleton.expToNextLevel = 10;
+        singleton.xpBar.UpdateXPBarTitle(singleton.playerLevel);
         singleton.isAlive = true;
         singleton.playerMaxHealth = 10;
         singleton.playerHealth = singleton.playerMaxHealth;
