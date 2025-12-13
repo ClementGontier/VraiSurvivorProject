@@ -93,7 +93,7 @@ public class Singleton : MonoBehaviour
         if (timer != null)
             timer.text = "Temps : " + timertime.ToString();
         if (pvText != null)
-            pvText.text = "Vies : " + playerHealth.ToString();
+            pvText.text = "Vies : " + playerHealth.ToString() + "/" + playerMaxHealth.ToString();
 
         xpBar.UpdateXPBar(playerXP, expToNextLevel);
     }
@@ -109,7 +109,7 @@ public class Singleton : MonoBehaviour
         if (playerHealth < 0) playerHealth = 0;
 
         if (pvText != null)
-            pvText.text = "Vies : " + playerHealth.ToString();
+            pvText.text = "Vies : " + playerHealth.ToString() + "/" + playerMaxHealth.ToString();
 
         if (playerHealth <= 0 && isAlive)
         {

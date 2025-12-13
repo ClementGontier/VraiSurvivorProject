@@ -11,6 +11,12 @@ public class bougeEnnemies : MonoBehaviour
     public Animator animator;
     public SpriteRenderer sr;
     public string animationName = "Move";
+    private vieEnnemies vieEnnemiesScript;
+
+    void Start()
+    {
+        vieEnnemiesScript = GetComponent<vieEnnemies>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -44,7 +50,7 @@ public class bougeEnnemies : MonoBehaviour
     {
         if(collision.gameObject.tag == "Joueur")
         {
-            Singleton.Instance.TakeDamage(1);
+            Singleton.Instance.TakeDamage(vieEnnemiesScript.degats);
             //Debug.Log("le joueur prend 1 degat");
         }
     }
