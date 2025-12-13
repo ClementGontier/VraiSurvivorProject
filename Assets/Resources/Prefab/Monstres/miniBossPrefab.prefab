@@ -1318,7 +1318,7 @@ Transform:
   m_GameObject: {fileID: 7357736890639134852}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.9099865, y: 0.22362745, z: -75.36}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1433,7 +1433,7 @@ MonoBehaviour:
   speed: 2
   animator: {fileID: 3398050275129903725}
   sr: {fileID: 0}
-  animationName: Move
+  animationName: MoveGolem
 --- !u!1 &7495744992096121957
 GameObject:
   m_ObjectHideFlags: 0

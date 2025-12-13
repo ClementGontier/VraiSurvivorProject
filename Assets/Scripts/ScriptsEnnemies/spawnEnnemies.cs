@@ -13,10 +13,13 @@ public class spawnEnnemies : MonoBehaviour
     public float increaseInterval = 5f;
     public int increaseAmount = 3;
     public int palier1, palier2;
+    private bool bossSpawned = false;
+    private Singleton singleton;
 
     private void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        singleton = Singleton.Instance;
     }
 
     private void OnDestroy()
@@ -97,7 +100,7 @@ public class spawnEnnemies : MonoBehaviour
         {
             // on attends deux secondes avant la première vague de spawn
             yield return new WaitForSeconds(2);
-
+            bossSpawned = false;
             while (true)
             {
                 if (nbEnemies > palier1 && nbEnemies < palier2)
@@ -118,6 +121,12 @@ public class spawnEnnemies : MonoBehaviour
                 {
                     for (int i = 0; i < nbEnemies; i++) SpawnEnemy("enemyPrefab3");
                 }
+                if(singleton.timertime <= 30f && !bossSpawned)
+                {
+                    // on spawn le boss une seule fois quand le temps est inférieur à 30 secondes
+                    SpawnEnemy("miniBossPrefab");
+                    bossSpawned = true;
+                }
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
@@ -125,7 +134,7 @@ public class spawnEnnemies : MonoBehaviour
         {
             // on attends deux secondes avant la première vague de spawn
             yield return new WaitForSeconds(2);
-
+            bossSpawned = false;
             while (true)
             {
                 if (nbEnemies > palier1 && nbEnemies < palier2)
