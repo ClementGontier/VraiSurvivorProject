@@ -67,7 +67,7 @@ public class Singleton : MonoBehaviour
 
     void Start()
     {
-        wm = FindFirstObjectByType<weaponsManager>();
+        
     }
 
     private void OnEnable()
@@ -89,7 +89,15 @@ public class Singleton : MonoBehaviour
         playerHealth = playerMaxHealth;
 
         if (scene.name == "MainMenu" || scene.name == "Victoire")
+        {
             Destroy(GameObject.Find("Joueur"));
+        }
+        else
+        {
+            // réinitialiser wm quand on entre dans une scène de jeu
+            wm = FindFirstObjectByType<weaponsManager>();
+        }
+
         if (timer != null)
             timer.text = "Temps : " + timertime.ToString();
         if (pvText != null)
