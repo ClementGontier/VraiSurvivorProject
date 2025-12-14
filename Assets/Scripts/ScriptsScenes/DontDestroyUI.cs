@@ -80,11 +80,15 @@ public class DontDestroyUI : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f;
+        Singleton.Instance.StopAllCoroutines();
+        singleton = Singleton.Instance;
+        singleton.isInvincible = false;
         singleton.playerXP = 0;
         singleton.playerLevel = 1;
         singleton.expToNextLevel = 10;
         // pour éviter les erreurs null reference quand on restart plein de fois
         if (singleton.xpBar == null) singleton.xpBar = FindFirstObjectByType<XPBarScript>(FindObjectsInactive.Include);
+        singleton.xpBar.UpdateXPBar(0, singleton.expToNextLevel);
         singleton.xpBar.UpdateXPBarTitle(singleton.playerLevel);
         singleton.isAlive = true;
         singleton.playerMaxHealth = 10;
