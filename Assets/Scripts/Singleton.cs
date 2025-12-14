@@ -166,6 +166,7 @@ public class Singleton : MonoBehaviour
         expToNextLevel += 10;
         playerMaxHealth += 2;
         playerHealth += 2;
+        xpBar.UpdateXPBar(playerXP, expToNextLevel);
         if (wm == null) wm = FindWeaponsManager();
         if (wm != null)
             wm.ApplyRandomUpgrade();

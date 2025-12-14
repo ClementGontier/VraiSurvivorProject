@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 public class vieEnnemies : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class vieEnnemies : MonoBehaviour
             meurt();
         }
     }
-    
+
     void meurt()
     {
         dropExp();
@@ -32,10 +33,17 @@ public class vieEnnemies : MonoBehaviour
 
     void dropExp()
     {
-        int nb = Random.Range(1, 3); 
-        if (nb == 2)
+        if (Regex.IsMatch(gameObject.name.ToLower(), "boss"))
         {
             Instantiate(xpPrefab, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            int nb = Random.Range(1, 3);
+            if (nb == 2)
+            {
+                Instantiate(xpPrefab, transform.position, Quaternion.identity);
+            }
         }
     }
 }
