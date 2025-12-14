@@ -155,7 +155,7 @@ public class spawnEnnemies : MonoBehaviour
                 {
                     for (int i = 0; i < nbEnemies; i++) SpawnEnemy("enemyPrefab6");
                 }
-                if(singleton.timertime <= 30f && !bossSpawned)
+                if(singleton.timertime <= 40f && !bossSpawned)
                 {
                     // on spawn le boss une seule fois quand le temps est inférieur à 30 secondes
                     SpawnEnemy("bossPrefab");

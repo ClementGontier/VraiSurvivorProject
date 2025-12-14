@@ -2896,6 +2896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e537679e2cb5ae746a929321aa23b926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vieMax: 550
+  vieMax: 850
   degats: 10
   xpPrefab: {fileID: 9066577262260970923, guid: 0e1183bb7cea23d43ae898a0ecbe3248, type: 3}
