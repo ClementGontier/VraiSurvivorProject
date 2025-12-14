@@ -94,8 +94,7 @@ public class Singleton : MonoBehaviour
         }
         else
         {
-            // réinitialiser wm quand on entre dans une scène de jeu
-            wm = FindFirstObjectByType<weaponsManager>();
+            wm = FindWeaponsManager();
         }
 
         if (timer != null)
@@ -104,6 +103,13 @@ public class Singleton : MonoBehaviour
             pvText.text = "Vies : " + playerHealth.ToString() + "/" + playerMaxHealth.ToString();
 
         xpBar.UpdateXPBar(playerXP, expToNextLevel);
+    }
+
+    private weaponsManager FindWeaponsManager()
+    {
+        var manager = FindFirstObjectByType<weaponsManager>(FindObjectsInactive.Include);
+        if (manager == null) Debug.LogWarning("weaponsManager introuvable dans la scène");
+        return manager;
     }
 
 
@@ -160,7 +166,9 @@ public class Singleton : MonoBehaviour
         expToNextLevel += 10;
         playerMaxHealth += 2;
         playerHealth += 2;
-        wm.ApplyRandomUpgrade();
+        if (wm == null) wm = FindWeaponsManager();
+        if (wm != null)
+            wm.ApplyRandomUpgrade();
         xpBar.UpdateXPBarTitle(playerLevel);
     }
 }
