@@ -107,7 +107,7 @@ public class Singleton : MonoBehaviour
 
     private weaponsManager FindWeaponsManager()
     {
-        var manager = FindFirstObjectByType<weaponsManager>(FindObjectsInactive.Include);
+        weaponsManager manager = FindFirstObjectByType<weaponsManager>(FindObjectsInactive.Include);
         if (manager == null) Debug.LogWarning("weaponsManager introuvable dans la scène");
         return manager;
     }
