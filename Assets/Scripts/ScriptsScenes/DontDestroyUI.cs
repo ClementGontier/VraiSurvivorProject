@@ -83,6 +83,8 @@ public class DontDestroyUI : MonoBehaviour
         singleton.playerXP = 0;
         singleton.playerLevel = 1;
         singleton.expToNextLevel = 10;
+        // pour éviter les erreurs null reference quand on restart plein de fois
+        if (singleton.xpBar == null) singleton.xpBar = FindFirstObjectByType<XPBarScript>(FindObjectsInactive.Include);
         singleton.xpBar.UpdateXPBarTitle(singleton.playerLevel);
         singleton.isAlive = true;
         singleton.playerMaxHealth = 10;
@@ -96,27 +98,23 @@ public class DontDestroyUI : MonoBehaviour
     private void reinitialiserListeArmes()
     {
         IWeapon pistoletAuto = null;
-        if (singleton.wm.activeWeapons.Count > 1)
+        // pour éviter les erreurs null reference quand on restart plein de fois
+        if (singleton.wm == null) singleton.wm = FindFirstObjectByType<weaponsManager>(FindObjectsInactive.Include);
+        for (int i = singleton.wm.activeWeapons.Count - 1; i >= 0; i--)
         {
-
-            for (int i = singleton.wm.activeWeapons.Count - 1; i >= 0; i--)
+            IWeapon weapon = singleton.wm.activeWeapons[i];
+            if (weapon != null)
             {
-                IWeapon weapon = singleton.wm.activeWeapons[i];
-                if (weapon != null)
+                if (weapon.GetGameObject().name == "pistoletAuto")
                 {
-                    if (weapon.GetGameObject().name == "pistoletAuto")
-                    {
-                        pistoletAuto = weapon;
-                    }
-                    weapon.Reinit();
-                    singleton.wm.eneleverArme(weapon);
-                    Debug.Log(weapon.GetGameObject().name + " a été réinitialisé et retiré de la liste");
+                    pistoletAuto = weapon;
                 }
-
+                weapon.Reinit();
+                singleton.wm.eneleverArme(weapon);
+                Debug.Log(weapon.GetGameObject().name + " a été réinitialisé et retiré de la liste");
             }
 
         }
-
         singleton.wm.ajoutArme(pistoletAuto);
     }
 }
