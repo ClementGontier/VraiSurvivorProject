@@ -6,6 +6,7 @@ public class aura : MonoBehaviour, IWeapon
     public float vitesseAttaque = 0.5f;
     public int degats = 1;
     public float taille = 5;
+    public Sprite icone;
     private float tempsAvantProchaineAttaque = 0f;
     private List<GameObject> EnnemiesDansZone = new();
 
@@ -37,6 +38,11 @@ public class aura : MonoBehaviour, IWeapon
         return gameObject.name;
     }
 
+    public Sprite GetIcone()
+    {
+        return icone;
+    }
+
     public void Upgrade()
     {
         int x = Random.Range(1, 4);
@@ -55,6 +61,37 @@ public class aura : MonoBehaviour, IWeapon
                 Debug.Log("attaque aura augmenté");
                 break;
         }
+    }
+
+    public List<UpgradeOption> GetUpgradeOptions()
+    {
+        return new List<UpgradeOption>
+        {
+            new UpgradeOption
+            {
+                titre = "Level up Aura",
+                sousTitre = "Fréquence",
+                description = "Augmente la fréquence des dégâts de +0.5",
+                icone = icone,
+                appliquer = () => { vitesseAttaque += 0.5f; }
+            },
+            new UpgradeOption
+            {
+                titre = "Level up Aura",
+                sousTitre = "Portée",
+                description = "Augmente la zone d'effet de +3",
+                icone = icone,
+                appliquer = () => { taille += 3; }
+            },
+            new UpgradeOption
+            {
+                titre = "Level up Aura",
+                sousTitre = "Dégâts",
+                description = "Augmente les dégâts de +2",
+                icone = icone,
+                appliquer = () => { degats += 2; }
+            }
+        };
     }
 
     public void Reinit()
@@ -93,7 +130,6 @@ public class aura : MonoBehaviour, IWeapon
             if (vieEnnemi != null)
             {
                 vieEnnemi.prendsDegats(degats);
-                // Debug.Log("L'ennemie prend " + degats + " degats");
             }
         }
     }

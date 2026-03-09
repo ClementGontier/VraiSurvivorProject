@@ -7,11 +7,12 @@ using System;
 
 public class DontDestroyUI : MonoBehaviour
 {
-    public static DontDestroyUI instance; 
-    public GameObject gameOverMenu; 
+    public static DontDestroyUI instance;
+    public GameObject gameOverMenu;
     public TMP_Text healthUI;
     public TMP_Text timer;
     public XPBarScript XPBar;
+    public LevelUpMenuManager levelUpMenu;
     private Singleton singleton;
     private AudioManager audiom;
     void Awake()
@@ -19,13 +20,20 @@ public class DontDestroyUI : MonoBehaviour
 
         if (instance == null)
         {
-            instance = this; 
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
+
+        // Ajout du menu de level up au Canvas
+        if (GetComponent<LevelUpMenuManager>() == null)
+            levelUpMenu = gameObject.AddComponent<LevelUpMenuManager>();
+        else
+            levelUpMenu = GetComponent<LevelUpMenuManager>();
+
         gameObject.SetActive(true);
         SceneManager.LoadSceneAsync("MainMenu");
     }

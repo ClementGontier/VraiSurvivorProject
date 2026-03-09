@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Singleton.cs" />
+    <Compile Include="Assets\Scripts\ScriptsScenes\LevelUpMenuManager.cs" />
     <Compile Include="Assets\Scripts\ScriptsJoueur\weaponsManager.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\pelles\projectilesPellesManager.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Scripts\ScriptsScenes\GetPlayer.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\pistoletAuto\pistoletAuto.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\fleche\projectileFlecheManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptsArmes\UpgradeOption.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\faucille\faucille.cs" />
     <Compile Include="Assets\Scripts\ScriptsXp\ExpManager.cs" />
     <Compile Include="Assets\Scripts\ScriptsEnnemies\spawnEnnemies.cs" />

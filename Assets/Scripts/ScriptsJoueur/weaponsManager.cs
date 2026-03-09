@@ -81,6 +81,41 @@ public class weaponsManager : MonoBehaviour
         return EnnemiesDansZone[index];
     }
 
+    public List<UpgradeOption> GenererOptionsUpgrade(int nb)
+    {
+        List<UpgradeOption> toutesOptions = new List<UpgradeOption>();
+
+        // Options d'unlock pour les armes verrouillées
+        foreach (IWeapon weapon in lockedWeapons)
+        {
+            IWeapon w = weapon;
+            toutesOptions.Add(new UpgradeOption
+            {
+                titre = "Unlock " + w.GetName(),
+                sousTitre = "Nouvelle arme",
+                description = "Débloque l'arme " + w.GetName(),
+                icone = w.GetIcone(),
+                estUnlock = true,
+                appliquer = () => ajoutArme(w)
+            });
+        }
+
+        // Options d'upgrade pour les armes actives
+        foreach (IWeapon weapon in activeWeapons)
+        {
+            toutesOptions.AddRange(weapon.GetUpgradeOptions());
+        }
+
+        // Mélange Fisher-Yates
+        for (int i = toutesOptions.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (toutesOptions[i], toutesOptions[j]) = (toutesOptions[j], toutesOptions[i]);
+        }
+
+        return toutesOptions.GetRange(0, Mathf.Min(nb, toutesOptions.Count));
+    }
+
     public void ApplyRandomUpgrade()
     {
         bool canUnlock = lockedWeapons.Count > 0;

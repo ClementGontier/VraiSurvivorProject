@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class pistoletAuto : MonoBehaviour, IWeapon
@@ -7,11 +8,12 @@ public class pistoletAuto : MonoBehaviour, IWeapon
     public float vitesseProjectile = 10f;
     public int degats = 10;
     public float distanceAvantDestruction = 15f;
+    public Sprite icone;
     protected GameObject projectilePrefab;
     public GameObject departTire;
 
 
-    
+
     void Start()
     {
         projectilePrefab = Resources.Load<GameObject>("Prefab/Armes/projectile");
@@ -28,10 +30,15 @@ public class pistoletAuto : MonoBehaviour, IWeapon
     {
         return gameObject;
     }
-    
+
     public string GetName()
     {
         return gameObject.name;
+    }
+
+    public Sprite GetIcone()
+    {
+        return icone;
     }
 
      public void Upgrade()
@@ -50,6 +57,29 @@ public class pistoletAuto : MonoBehaviour, IWeapon
         }
     }
 
+    public List<UpgradeOption> GetUpgradeOptions()
+    {
+        return new List<UpgradeOption>
+        {
+            new UpgradeOption
+            {
+                titre = "Level up Boule de Feu",
+                sousTitre = "Cadence de tir",
+                description = "Augmente la cadence de tir de +0.3",
+                icone = icone,
+                appliquer = () => { vitesseAttaque += 0.3f; }
+            },
+            new UpgradeOption
+            {
+                titre = "Level up Boule de Feu",
+                sousTitre = "Dégâts",
+                description = "Augmente les dégâts de +2",
+                icone = icone,
+                appliquer = () => { degats += 2; }
+            }
+        };
+    }
+
     public void Reinit()
     {
         vitesseAttaque = 1f;
@@ -65,7 +95,7 @@ public class pistoletAuto : MonoBehaviour, IWeapon
             tempsAvantProchaineAttaque -= Time.deltaTime;
         }
     }
-    
+
     public void essaieAttaque(GameObject ennemie)
     {
         if(tempsAvantProchaineAttaque<=0)
@@ -91,7 +121,7 @@ public class pistoletAuto : MonoBehaviour, IWeapon
         // on oriente le projectile (j'ai mis +270 à l'angle pour que le sprite soit dans le bon sens, sinon il était perpendiculaire à la direction et j'ai la flemme de savoir pourquoi)
         projectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+270));
 
-        // on assigne les dégâts au projectile et la distance avant destruction 
+        // on assigne les dégâts au projectile et la distance avant destruction
         projectilesPistoletAutoManager paramsProj = projectile.GetComponent<projectilesPistoletAutoManager>();
         if (paramsProj != null)
         {

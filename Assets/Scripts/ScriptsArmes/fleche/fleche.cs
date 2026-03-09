@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class fleche : MonoBehaviour, IWeapon
@@ -9,6 +10,7 @@ public class fleche : MonoBehaviour, IWeapon
     public int degats = 5;
     public float distanceAvantDestruction = 8f;
     public float angleEcart = 25f;
+    public Sprite icone;
     protected GameObject projectilePrefab;
     public GameObject departTire;
     private weaponsManager wm;
@@ -43,11 +45,38 @@ public class fleche : MonoBehaviour, IWeapon
         return gameObject.name;
     }
 
+    public Sprite GetIcone()
+    {
+        return icone;
+    }
+
     public void Upgrade()
     {
         nombreProjectiles++;
         angleEcart += 5f;
-        Debug.Log("fleche : " + nombreProjectiles + " projectiles, rayon " + angleEcart + "°");
+    }
+
+    public List<UpgradeOption> GetUpgradeOptions()
+    {
+        return new List<UpgradeOption>
+        {
+            new UpgradeOption
+            {
+                titre = "Level up Flèches",
+                sousTitre = "Volée",
+                description = "+1 flèche et rayon +5°",
+                icone = icone,
+                appliquer = () => { nombreProjectiles++; angleEcart += 5f; }
+            },
+            new UpgradeOption
+            {
+                titre = "Level up Flèches",
+                sousTitre = "Dégâts",
+                description = "Augmente les dégâts de +2",
+                icone = icone,
+                appliquer = () => { degats += 2; }
+            }
+        };
     }
 
     public void Reinit()

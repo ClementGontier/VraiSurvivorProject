@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class pelles : MonoBehaviour, IWeapon
@@ -8,6 +9,7 @@ public class pelles : MonoBehaviour, IWeapon
     public float vitesseProjectile = 10f;
     public int degats = 10;
     public float distanceAvantDestruction = 8f;
+    public Sprite icone;
     protected GameObject projectilePrefab;
     public GameObject departTire;
 
@@ -45,6 +47,11 @@ public class pelles : MonoBehaviour, IWeapon
         return gameObject.name;
     }
 
+    public Sprite GetIcone()
+    {
+        return icone;
+    }
+
     public void Upgrade()
     {
         int x = Random.Range(1, 4);
@@ -65,13 +72,44 @@ public class pelles : MonoBehaviour, IWeapon
         }
     }
 
+    public List<UpgradeOption> GetUpgradeOptions()
+    {
+        return new List<UpgradeOption>
+        {
+            new UpgradeOption
+            {
+                titre = "Level up Pelles",
+                sousTitre = "Cadence de tir",
+                description = "Augmente la cadence de tir de +0.5",
+                icone = icone,
+                appliquer = () => { vitesseAttaque += 0.5f; }
+            },
+            new UpgradeOption
+            {
+                titre = "Level up Pelles",
+                sousTitre = "Projectiles",
+                description = "Ajoute +1 projectile au tir",
+                icone = icone,
+                appliquer = () => { nombreProjectiles++; }
+            },
+            new UpgradeOption
+            {
+                titre = "Level up Pelles",
+                sousTitre = "Dégâts",
+                description = "Augmente les dégâts de +2",
+                icone = icone,
+                appliquer = () => { degats += 2; }
+            }
+        };
+    }
+
     public void Reinit()
     {
         nombreProjectiles = 3;
         vitesseAttaque = 1f;
         degats = 10;
     }
-    
+
     public void essaieAttaque(GameObject ennemie)
     {
         if(tempsAvantProchaineAttaque<=0)

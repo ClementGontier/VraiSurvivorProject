@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public interface IWeapon
@@ -5,7 +6,9 @@ public interface IWeapon
     void updateWeapon();
     void essaieAttaque(GameObject cible);
     void Upgrade();
-    public GameObject GetGameObject();
-    public string GetName();
-    public void Reinit();
+    GameObject GetGameObject();
+    string GetName();
+    void Reinit();
+    List<UpgradeOption> GetUpgradeOptions();
+    Sprite GetIcone();
 }

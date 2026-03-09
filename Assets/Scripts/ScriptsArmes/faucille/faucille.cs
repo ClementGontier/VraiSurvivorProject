@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.WindowsMR.Input;
 
 public class faucille : MonoBehaviour, IWeapon
 {
@@ -10,11 +9,12 @@ public class faucille : MonoBehaviour, IWeapon
     public int degats = 1;
     public float distanceAvantDemi = 5f;
     public float taille = 1;
+    public Sprite icone;
     protected GameObject projectilePrefab;
     public GameObject departTire;
     private weaponsManager wm;
 
-    
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,7 +24,7 @@ public class faucille : MonoBehaviour, IWeapon
         wm = GetComponentInParent<weaponsManager>();
     }
 
-    
+
 
     // Update is called once per frame
     public void updateWeapon()
@@ -52,6 +52,11 @@ public class faucille : MonoBehaviour, IWeapon
         return gameObject.name;
     }
 
+    public Sprite GetIcone()
+    {
+        return icone;
+    }
+
     public void Upgrade()
     {
         int x = Random.Range(1, 4);
@@ -70,6 +75,37 @@ public class faucille : MonoBehaviour, IWeapon
                 Debug.Log("attaque faucille augmenté");
                 break;
         }
+    }
+
+    public List<UpgradeOption> GetUpgradeOptions()
+    {
+        return new List<UpgradeOption>
+        {
+            new UpgradeOption
+            {
+                titre = "Level up Faucille",
+                sousTitre = "Cadence de tir",
+                description = "Augmente la cadence de tir de +0.5",
+                icone = icone,
+                appliquer = () => { vitesseAttaque += 0.5f; }
+            },
+            new UpgradeOption
+            {
+                titre = "Level up Faucille",
+                sousTitre = "Taille",
+                description = "Augmente la taille du projectile de +2",
+                icone = icone,
+                appliquer = () => { taille += 2; }
+            },
+            new UpgradeOption
+            {
+                titre = "Level up Faucille",
+                sousTitre = "Dégâts",
+                description = "Augmente les dégâts de +2",
+                icone = icone,
+                appliquer = () => { degats += 2; }
+            }
+        };
     }
 
     public void Reinit()

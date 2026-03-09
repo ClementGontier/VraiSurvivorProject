@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -150,11 +151,15 @@ public class Singleton : MonoBehaviour
     public void AddXP(int nbExp)
     {
         playerXP += nbExp;
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.xpson);   
-        while (playerXP >= expToNextLevel)
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.xpson);
+        VerifierLevelUp();
+    }
+
+    public void VerifierLevelUp()
+    {
+        if (playerXP >= expToNextLevel)
         {
             LevelUp();
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.levelupson);
         }
         xpBar.UpdateXPBar(playerXP, expToNextLevel);
     }
@@ -169,8 +174,17 @@ public class Singleton : MonoBehaviour
         if (pvText != null)
             pvText.text = "Vies : " + playerHealth.ToString() + "/" + playerMaxHealth.ToString();
         if (wm == null) wm = FindWeaponsManager();
-        if (wm != null)
-            wm.ApplyRandomUpgrade();
         xpBar.UpdateXPBarTitle(playerLevel);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.levelupson);
+
+        // Affiche le menu de choix d'amélioration
+        if (wm != null)
+        {
+            List<UpgradeOption> options = wm.GenererOptionsUpgrade(3);
+            if (options.Count > 0)
+            {
+                DontDestroyUI.instance.levelUpMenu.AfficherMenu(options);
+            }
+        }
     }
 }
