@@ -6,22 +6,21 @@ public class fleche : MonoBehaviour, IWeapon
     public float vitesseAttaque = 1f;
     protected float tempsAvantProchaineAttaque = 0f;
     public float vitesseProjectile = 10f;
-    public int degats = 10;
+    public int degats = 5;
     public float distanceAvantDestruction = 8f;
+    public float angleEcart = 25f;
     protected GameObject projectilePrefab;
     public GameObject departTire;
+    private weaponsManager wm;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         projectilePrefab = Resources.Load<GameObject>("Prefab/Armes/projPelles");
+        wm = GetComponentInParent<weaponsManager>();
     }
 
-    // Update is called once per frame
     public void updateWeapon()
     {
-        // tant que le temps avant la prochaine attaque est supérieur à 0 on le décrémente
         if (tempsAvantProchaineAttaque > 0)
         {
             tempsAvantProchaineAttaque -= Time.deltaTime;
@@ -31,7 +30,7 @@ public class fleche : MonoBehaviour, IWeapon
     private void OnEnable()
     {
         weaponsManager weaponsManager = GetComponentInParent<weaponsManager>();
-        weaponsManager.ajoutArme(this);
+        if (weaponsManager != null) weaponsManager.ajoutArme(this);
     }
 
     public GameObject GetGameObject()
@@ -46,44 +45,51 @@ public class fleche : MonoBehaviour, IWeapon
 
     public void Upgrade()
     {
-        
+        nombreProjectiles++;
+        angleEcart += 5f;
+        Debug.Log("fleche : " + nombreProjectiles + " projectiles, rayon " + angleEcart + "°");
     }
 
     public void Reinit()
     {
-        
+        nombreProjectiles = 3;
+        vitesseAttaque = 1f;
+        degats = 5;
+        angleEcart = 25f;
     }
-    
+
     public void essaieAttaque(GameObject ennemie)
     {
-        if(tempsAvantProchaineAttaque<=0)
+        if (tempsAvantProchaineAttaque <= 0)
         {
-            attaque(ennemie);
+            GameObject cible = wm.ChoisirEnnemi();
+            if (cible == null) return;
+            attaque(cible);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.pelleson);
             tempsAvantProchaineAttaque = 1f / vitesseAttaque;
         }
     }
 
     public void attaque(GameObject ennemie)
     {
-        // on calcul les angles entre chaque projectile
-        float angleEntreProjectiles = 45f / nombreProjectiles;
+        // direction de base vers l'ennemi
+        Vector3 emplacementEnnemie = ennemie.GetComponent<Collider2D>().bounds.center;
+        Vector3 directionBase = (emplacementEnnemie - departTire.transform.position).normalized;
+        float angleBase = Mathf.Atan2(directionBase.y, directionBase.x) * Mathf.Rad2Deg;
+
+        // espacement entre les flèches dans le cône
+        float angleStep = nombreProjectiles > 1 ? angleEcart / (nombreProjectiles - 1) : 0f;
+        float angleDepart = angleBase - angleEcart / 2f;
 
         for (int i = 0; i < nombreProjectiles; i++)
         {
-            // on détermine l'angle de tir du projectile
-            float angle = i * angleEntreProjectiles + 90f;
+            float angle = angleDepart + i * angleStep;
+            float angleRad = angle * Mathf.Deg2Rad;
+            Vector3 direction = new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad), 0);
 
-            // convertir l'angle en direction (vecteur)
-            float angleRadians = angle * Mathf.Deg2Rad;
-            Vector3 direction = new Vector3(Mathf.Cos(angleRadians), Mathf.Sin(angleRadians), 0);
-
-            // on crée le projectile
             GameObject projectile = Instantiate(projectilePrefab, departTire.transform.position, Quaternion.identity);
+            projectile.transform.rotation = Quaternion.Euler(0, 0, angle + 270);
 
-            // on oriente le projectile (j'ai mis +270 à l'angle pour que le sprite soit dans le bon sens, sinon il était perpendiculaire à la direction et j'ai la flemme de savoir pourquoi)
-            projectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+270));
-
-            // on assigne les dégâts au projectile et la distance avant destruction
             projectilesPellesManager paramProj = projectile.GetComponent<projectilesPellesManager>();
             if (paramProj != null)
             {
@@ -91,12 +97,11 @@ public class fleche : MonoBehaviour, IWeapon
                 paramProj.distanceAvantDestruction = distanceAvantDestruction;
             }
 
-            // on annule la gravité et on applique une vélocité au projectile
             Rigidbody2D rbP = projectile.GetComponent<Rigidbody2D>();
             if (rbP != null)
             {
                 rbP.gravityScale = 0;
-                rbP.linearVelocity = direction.normalized * vitesseProjectile;
+                rbP.linearVelocity = direction * vitesseProjectile;
             }
         }
     }
