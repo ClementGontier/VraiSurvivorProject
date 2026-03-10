@@ -36,12 +36,6 @@ public class faucille : MonoBehaviour, IWeapon
         }
     }
 
-    private void OnEnable()
-    {
-        weaponsManager weaponsManager = GetComponentInParent<weaponsManager>();
-        weaponsManager.ajoutArme(this);
-    }
-
     public GameObject GetGameObject()
     {
         return gameObject;

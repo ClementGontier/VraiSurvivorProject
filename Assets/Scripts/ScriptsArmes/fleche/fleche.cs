@@ -17,7 +17,7 @@ public class fleche : MonoBehaviour, IWeapon
 
     void Start()
     {
-        projectilePrefab = Resources.Load<GameObject>("Prefab/Armes/projPelles");
+        projectilePrefab = Resources.Load<GameObject>("Prefab/Armes/projFleche");
         wm = GetComponentInParent<weaponsManager>();
     }
 
@@ -27,12 +27,6 @@ public class fleche : MonoBehaviour, IWeapon
         {
             tempsAvantProchaineAttaque -= Time.deltaTime;
         }
-    }
-
-    private void OnEnable()
-    {
-        weaponsManager weaponsManager = GetComponentInParent<weaponsManager>();
-        if (weaponsManager != null) weaponsManager.ajoutArme(this);
     }
 
     public GameObject GetGameObject()
