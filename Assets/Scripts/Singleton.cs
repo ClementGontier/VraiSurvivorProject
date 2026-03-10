@@ -31,6 +31,12 @@ public class Singleton : MonoBehaviour
     public bool hasLoadedScene = false;
     private bool isPaused = false;
 
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0f : 1f;
+    }
+
     void Update()
     {
         if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "Victoire")
