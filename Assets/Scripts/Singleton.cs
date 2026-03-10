@@ -29,12 +29,17 @@ public class Singleton : MonoBehaviour
     public XPBarScript xpBar;
     public float timertimeMax = 60;
     public bool hasLoadedScene = false;
-
+    private bool isPaused = false;
 
     void Update()
     {
         if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "Victoire")
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                TogglePause();
+            }
+
             AudioManager.Instance.PlayMusic(AudioManager.Instance.musiqueniveau);
             timertime -= 1 * Time.deltaTime;
             timer.text = timertime.ToString("0");
@@ -68,7 +73,7 @@ public class Singleton : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     private void OnEnable()
