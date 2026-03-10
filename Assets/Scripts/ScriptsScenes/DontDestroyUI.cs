@@ -34,6 +34,10 @@ public class DontDestroyUI : MonoBehaviour
         else
             levelUpMenu = GetComponent<LevelUpMenuManager>();
 
+        // Ajout du menu développeur
+        if (GetComponent<DevMenuManager>() == null)
+            gameObject.AddComponent<DevMenuManager>();
+
         gameObject.SetActive(true);
         SceneManager.LoadSceneAsync("MainMenu");
     }

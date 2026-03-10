@@ -54,6 +54,7 @@
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\pelles\projectilesPellesManager.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\fleche\fleche.cs" />
+    <Compile Include="Assets\Scripts\ScriptsScenes\DevMenuManager.cs" />
     <Compile Include="Assets\Scripts\ScriptsScenes\DontDestroyUI.cs" />
     <Compile Include="Assets\Scripts\ScriptsArmes\faucille\projectileFaucilleManager.cs" />
     <Compile Include="Assets\ImportedAssets\DungeonMonsters2D\UserInterface\StartMenu.cs" />

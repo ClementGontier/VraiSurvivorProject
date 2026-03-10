@@ -111,9 +111,9 @@ public class fleche : MonoBehaviour, IWeapon
             Vector3 direction = new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad), 0);
 
             GameObject projectile = Instantiate(projectilePrefab, departTire.transform.position, Quaternion.identity);
-            projectile.transform.rotation = Quaternion.Euler(0, 0, angle + 270);
+            projectile.transform.rotation = Quaternion.Euler(0, 0, angle + 180);
 
-            projectilesPellesManager paramProj = projectile.GetComponent<projectilesPellesManager>();
+            projectileFlecheManager paramProj = projectile.GetComponent<projectileFlecheManager>();
             if (paramProj != null)
             {
                 paramProj.degats = degats;

@@ -47,7 +47,9 @@ public class Singleton : MonoBehaviour
             }
 
             AudioManager.Instance.PlayMusic(AudioManager.Instance.musiqueniveau);
-            timertime -= 1 * Time.deltaTime;
+            spawnEnnemies spawner = FindFirstObjectByType<spawnEnnemies>();
+            if (spawner == null || !spawner.spawnPaused)
+                timertime -= 1 * Time.deltaTime;
             timer.text = timertime.ToString("0");
 
             if (timertime <= 0 && !hasLoadedScene)
