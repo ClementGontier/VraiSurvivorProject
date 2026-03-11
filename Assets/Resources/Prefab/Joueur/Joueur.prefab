@@ -38,6 +38,7 @@ Transform:
   m_Children:
   - {fileID: 4108060649103252005}
   - {fileID: 9051880345496166099}
+  - {fileID: 6460399714038847344}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5387011410703292766
@@ -300,10 +301,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9707340f0e11302449c2b50c6bb9fc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitesseAttaque: 5
+  vitesseAttaque: 0.7
   vitesseProjectile: 10
-  degats: 10
+  degats: 1
   distanceAvantDestruction: 15
+  icone: {fileID: -537537479, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   departTire: {fileID: 7027467580640206230}
 --- !u!1 &3095240275519489355
 GameObject:
@@ -349,11 +351,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48959b2b999fb945997ed68b65ab878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreProjectiles: 8
-  vitesseAttaque: 2
+  nombreProjectiles: 3
+  vitesseAttaque: 0.5
   vitesseProjectile: 10
-  degats: 10
+  degats: 1
   distanceAvantDestruction: 8
+  icone: {fileID: 1737672109, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   departTire: {fileID: 7027467580640206230}
 --- !u!1 &4819763729080131024
 GameObject:
@@ -397,14 +400,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1c442565eb02fc44bea23dba596ae50, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   nombreProjectiles: 3
   vitesseAttaque: 1
   vitesseProjectile: 10
   degats: 5
   distanceAvantDestruction: 8
   angleEcart: 25
+  icone: {fileID: 21300000, guid: 6e57beadba8706b4e9ae8369000ee79b, type: 3}
   departTire: {fileID: 7027467580640206230}
 --- !u!1 &4869753610199858817
 GameObject:
@@ -422,7 +426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3937940996028444409
 Transform:
   m_ObjectHideFlags: 0
@@ -450,11 +454,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c128a278eb35a8c4da01813e11ca25b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitesseAttaque: 5
+  vitesseAttaque: 1
   vitesseProjectile: 10
-  degats: 10
+  degats: 1
   distanceAvantDemi: 5
-  taille: 1.4
+  taille: 1
+  icone: {fileID: 762804792, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   departTire: {fileID: 7027467580640206230}
 --- !u!1 &5510346871386166780
 GameObject:
@@ -523,6 +528,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3122733389154089124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7607501222044929510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6460399714038847344}
+  - component: {fileID: 6702085783465957497}
+  m_Layer: 0
+  m_Name: expPicker
+  m_TagString: expPicker
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6460399714038847344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7607501222044929510}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3122733389154089124}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &6702085783465957497
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7607501222044929510}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.037281215, y: 0.008284569}
+  m_Size: {x: 0.8728075, y: 1.3645229}
+  m_Direction: 0
 --- !u!1 &7751899910538333146
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +625,7 @@ Transform:
   m_GameObject: {fileID: 7751899910538333146}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: -0.52, z: 0.5}
   m_LocalScale: {x: 5, y: 5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -664,6 +738,7 @@ MonoBehaviour:
   vitesseAttaque: 1
   degats: 1
   taille: 5
+  icone: {fileID: 0}
 --- !u!1 &8650940289081359307
 GameObject:
   m_ObjectHideFlags: 0
